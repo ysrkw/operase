@@ -1,0 +1,77 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# ルート設定ファイル
+root = true
+
+# すべてのファイルに適用する設定
+[*]
+# 文字エンコーディング
+charset = utf-8
+# 改行コード（LF）
+end_of_line = lf
+# ファイル末尾に改行を挿入
+insert_final_newline = true
+# 行末の空白文字を削除
+trim_trailing_whitespace = true
+# インデント設定（スペース使用）
+indent_style = space
+# 基本インデント幅
+indent_size = 2
+
+# Markdown ファイル
+[*.md]
+# Markdownでは行末スペースが意味を持つ場合があるため除去しない
+trim_trailing_whitespace = false
+
+# YAML ファイル
+[*.{yml,yaml}]
+indent_size = 2
+
+# JSON ファイル
+[*.json]
+indent_size = 2
+
+# JavaScript/TypeScript ファイル
+[*.{js,jsx,ts,tsx}]
+indent_size = 2
+
+# HTML ファイル
+[*.{html,htm}]
+indent_size = 2
+
+# CSS/Sass/Less ファイル
+[*.{css,scss,sass,less}]
+indent_size = 2
+
+# Python ファイル
+[*.py]
+indent_size = 4
+
+# Makefile（タブ必須）
+[Makefile]
+indent_style = tab
+
+# Go ファイル（タブ使用が慣例）
+[*.go]
+indent_style = tab
+indent_size = 4
+
+# Java ファイル
+[*.java]
+indent_size = 4
+
+# C/C++ ファイル
+[*.{c,cpp,h,hpp}]
+indent_size = 4
+
+# XML ファイル
+[*.xml]
+indent_size = 2
+
+# Shell スクリプト
+[*.{sh,bash}]
+indent_size = 2
+
+# 設定ファイル
+[*.{ini,cfg,conf}]
+indent_size = 2

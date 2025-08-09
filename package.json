@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "lint": "prettier . --check",
+    "fmt": "prettier . --write"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { sum } from './sum.js'
+import { sum } from './sum'
 
 describe('sum', () => {
   test('1 + 2 = 3', () => {

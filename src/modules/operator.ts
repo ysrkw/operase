@@ -1,20 +1,20 @@
-import { BrandType } from '../utils/brand-type'
+import { Brand } from 'effect'
+
 import { createOperatorId, OperatorId } from './operator-id'
 import { createOperatorName, OperatorName } from './operator-name'
 
-export type Operator = BrandType<{
+export type Operator = Brand.Brand<'Operator'> & {
   id: OperatorId
   name: OperatorName
-}, 'operator'>
-
-interface OperatorProperties {
-  id: string
-  name: string
 }
 
-export function createOperator(properties: OperatorProperties): Operator {
-  return {
-    id: createOperatorId(properties.id),
-    name: createOperatorName(properties.name),
-  } as Operator
+const Operator = Brand.nominal<Operator>()
+
+export function createOperator(value: {
+  name: string
+}): Operator {
+  return Operator({
+    id: createOperatorId(),
+    name: createOperatorName(value.name),
+  })
 }

@@ -1,21 +1,13 @@
-import { isValid, ulid } from 'ulid'
+import { Brand } from 'effect'
+import { isValid, ulid, ULID } from 'ulid'
 
-import { BrandType } from '../utils/brand-type'
+export type OperatorId = Brand.Brand<'OperatorId'> & ULID
 
-export type OperatorId = BrandType<string, 'operatorId'>
+const OperatorId = Brand.refined<OperatorId>(
+  v => isValid(v),
+  v => Brand.error(`Invalid OperatorId: ${v}`),
+)
 
-class InvalidOperatorId extends Error {
-  constructor() {
-    super('Invalid OperatorId')
-  }
-}
-
-export function createOperatorId(value: unknown = ulid()): OperatorId {
-  if (typeof value !== 'string') throw new InvalidOperatorId()
-
-  const operatorId = value
-
-  if (!isValid(operatorId)) throw new InvalidOperatorId()
-
-  return operatorId as OperatorId
+export function createOperatorId(value = ulid()): OperatorId {
+  return OperatorId(value)
 }

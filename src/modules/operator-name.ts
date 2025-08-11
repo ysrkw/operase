@@ -1,19 +1,12 @@
-import { BrandType } from '../utils/brand-type'
+import { Brand } from 'effect'
 
-export type OperatorName = BrandType<string, 'operatorName'>
+export type OperatorName = Brand.Brand<'OperatorName'> & string
 
-class InvalidOperatorName extends Error {
-  constructor() {
-    super('Invalid OperatorName')
-  }
-}
+const OperatorName = Brand.refined<OperatorName>(
+  v => v.length > 0,
+  v => Brand.error(`Invalid OperatorName: ${v}`),
+)
 
-export function createOperatorName(value: unknown): OperatorName {
-  if (typeof value !== 'string') throw new InvalidOperatorName()
-
-  const operatorName = value.trim()
-
-  if (operatorName.length === 0) throw new InvalidOperatorName()
-
-  return operatorName as OperatorName
+export function createOperatorName(value: string): OperatorName {
+  return OperatorName(value.trim())
 }

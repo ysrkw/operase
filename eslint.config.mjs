@@ -6,6 +6,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import perfectionist from 'eslint-plugin-perfectionist'
 import unicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
+import vitest from '@vitest/eslint-plugin'
 
 export default tseslint.config([
   {
@@ -16,6 +17,7 @@ export default tseslint.config([
       stylistic.configs.recommended,
       perfectionist.configs['recommended-natural'],
       unicorn.configs.recommended,
+      vitest.configs.recommended,
     ],
     files: ['**/*.{js,ts}'],
   },

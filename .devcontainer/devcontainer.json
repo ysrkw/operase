@@ -13,8 +13,10 @@
         "terminal.integrated.defaultProfile.linux": "zsh"
       },
       "extensions": [
-        "EditorConfig.EditorConfig",
         "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "github.copilot",
+        "github.copilot-chat",
         "vitest.explorer"
       ]
     }

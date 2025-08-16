@@ -1,54 +1,58 @@
 import { Brand, Data, Effect } from 'effect'
+import { ZodError } from 'zod'
 
-import { Password, PasswordService, PasswordServiceErrors, PasswordServiceTag } from './services/password'
-import { Email, User, UserService, UserServiceErrors, UserServiceTag } from './services/user'
+import { createEmail, Email } from './models/email'
+import { createId, Id } from './models/id'
+import { createPassword, Password } from './models/password'
+import { createUser } from './models/user'
+import { PasswordService, PasswordServiceTag } from './services/password-service'
+import { UserRepository, UserRepositoryTag } from './services/user-repository'
+import { UserService, UserServiceTag } from './services/user-service'
 
 export interface SignupRequest {
   email: Brand.Brand.Unbranded<Email>
   password: Brand.Brand.Unbranded<Password>
 }
 
+export const SignupRequest = Data.case<SignupRequest>()
+
 export interface SignupResponse {
   email: Brand.Brand.Unbranded<Email>
+  id: Brand.Brand.Unbranded<Id>
 }
 
-type SignupErrors
- = | PasswordServiceErrors
-   | SignupAlreadyExistsError
-   | SignupValidationError
-   | UserServiceErrors
+export const SignupResponse = Data.case<SignupResponse>()
 
-type SignupRequirements = PasswordService | UserService
-
-export class SignupAlreadyExistsError extends Data.TaggedClass('SignupAlreadyExistsError')<{
-  readonly message: string
-}> {}
-
-export class SignupValidationError extends Data.TaggedClass('SignupValidationError')<{
-  readonly message: string
-}> {}
-
-export function signup(request: SignupRequest): Effect.Effect<SignupResponse, SignupErrors, SignupRequirements> {
+export function signup(request: SignupRequest): Effect.Effect<
+  SignupResponse,
+  Error | ZodError,
+  PasswordService | UserRepository | UserService
+> {
   return Effect.gen(function* () {
-    const email = Email(request.email)
-    const password = Password(request.password)
+    const id = yield* createId()
+    const email = yield* createEmail(request.email)
+    const password = yield* createPassword(request.password)
 
     const UserService = yield* UserServiceTag
-
     if (yield* UserService.exists(email)) {
-      return yield* Effect.fail(new SignupAlreadyExistsError({
-        message: `User with email ${email} already exists`,
-      }))
+      return yield* Effect.fail(new Error(`User with email ${email} already exists`))
     }
 
     const PasswordService = yield* PasswordServiceTag
-
     const hashedPassword = yield* PasswordService.hash(password)
 
-    const user = User({ email, hashedPassword })
+    const user = yield* createUser({
+      email,
+      hashedPassword,
+      id,
+    })
 
-    yield* UserService.save(user)
+    const UserRepository = yield* UserRepositoryTag
+    yield* UserRepository.save(user)
 
-    return yield* Effect.succeed({ email: Brand.unbranded(user.email) })
+    return yield* Effect.succeed(SignupResponse({
+      email: Brand.unbranded(user.email),
+      id: Brand.unbranded(user.id),
+    }))
   })
 }

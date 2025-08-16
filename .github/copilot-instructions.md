@@ -1,4 +1,4 @@
-# Copilot Instructions
+# Copilot instructions
 
 - すべての返答は日本語で行うこと。
 - ソースコードのコメントやテストケースは日本語で記述すること。

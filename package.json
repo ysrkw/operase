@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
     "tsc": "tsc --noEmit",
     "lint": "eslint .",
     "fmt": "eslint --fix ."

@@ -6,7 +6,7 @@ import { PasswordServiceTag } from './password-service'
 
 export const PasswordServiceArgon2 = PasswordServiceTag.of({
   hash: password => Effect.gen(function* () {
-    const hashedPassword = yield* Effect.tryPromise(() => hash(password))
+    const hashedPassword = yield* Effect.promise(() => hash(password))
     return yield* createHashedPassword(hashedPassword)
   }),
 })

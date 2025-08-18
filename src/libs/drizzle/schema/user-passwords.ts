@@ -1,12 +1,6 @@
-import { drizzle } from 'drizzle-orm/libsql'
 import { sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const database = drizzle(':memory:')
-
-export const users = sqliteTable('users', {
-  email: text('email').notNull().unique(),
-  id: text('id').notNull().primaryKey(),
-})
+import { users } from './users'
 
 export const userPasswords = sqliteTable('user_passwords', {
   createdAt: text('created_at').notNull().default('now'),

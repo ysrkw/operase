@@ -1,13 +1,12 @@
 import { Brand, Data, Effect } from 'effect'
 import { ZodError } from 'zod'
 
-import { createEmail, Email } from './models/email'
-import { createId, Id } from './models/id'
-import { createPassword, Password } from './models/password'
-import { createUser } from './models/user'
-import { PasswordService, PasswordServiceTag } from './services/password-service'
-import { UserRepository, UserRepositoryTag } from './services/user-repository'
-import { UserService, UserServiceTag } from './services/user-service'
+import { createEmail, Email } from '../../models/email'
+import { createId, Id } from '../../models/id'
+import { createPassword, Password } from '../../models/password'
+import { PasswordService } from './password-service'
+import { SignupUser } from './signup-user'
+import { SignupUserRepository } from './signup-user-repository'
 
 export interface SignupRequest {
   email: Brand.Brand.Unbranded<Email>
@@ -26,33 +25,32 @@ export const SignupResponse = Data.case<SignupResponse>()
 export function signup(request: SignupRequest): Effect.Effect<
   SignupResponse,
   Error | ZodError,
-  PasswordService | UserRepository | UserService
+  PasswordService | SignupUserRepository
 > {
   return Effect.gen(function* () {
     const id = yield* createId()
     const email = yield* createEmail(request.email)
     const password = yield* createPassword(request.password)
 
-    const UserService = yield* UserServiceTag
-    if (yield* UserService.exists(email)) {
+    const signupUserRepository = yield* SignupUserRepository
+    if (yield* signupUserRepository.exists(email)) {
       return yield* Effect.fail(new Error(`User with email ${email} already exists`))
     }
 
-    const PasswordService = yield* PasswordServiceTag
-    const hashedPassword = yield* PasswordService.hash(password)
+    const passwordService = yield* PasswordService
+    const hashedPassword = yield* passwordService.hash(password)
 
-    const user = yield* createUser({
+    const user = SignupUser({
       email,
       hashedPassword,
       id,
     })
 
-    const UserRepository = yield* UserRepositoryTag
-    yield* UserRepository.save(user)
+    yield* signupUserRepository.save(user)
 
-    return yield* Effect.succeed(SignupResponse({
+    return SignupResponse({
       email: Brand.unbranded(user.email),
       id: Brand.unbranded(user.id),
-    }))
+    })
   })
 }

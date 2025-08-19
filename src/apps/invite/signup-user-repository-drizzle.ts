@@ -1,9 +1,8 @@
 import { count, eq } from 'drizzle-orm'
 import { Effect, pipe } from 'effect'
 
-import { database } from '../../libs/drizzle'
-import { userPasswords } from '../../libs/drizzle/schema/user-passwords'
-import { users } from '../../libs/drizzle/schema/users'
+import { database } from '../../libs/drizzle/client'
+import { userPasswords, users } from '../../libs/drizzle/schema'
 import { SignupUserRepository } from './signup-user-repository'
 
 export const SignupUserRepositoryDrizzle = SignupUserRepository.of({

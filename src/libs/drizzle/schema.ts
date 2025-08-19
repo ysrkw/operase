@@ -7,6 +7,6 @@ export const users = sqliteTable('users', {
 
 export const userPasswords = sqliteTable('user_passwords', {
   createdAt: text('created_at').notNull().default('now'),
-  hash: text('hash').notNull(),
+  hash: text('hash').notNull().primaryKey(),
   userId: text('user_id').notNull().references(() => users.id),
 })

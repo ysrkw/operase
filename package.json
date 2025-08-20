@@ -7,7 +7,7 @@
     "fmt": "eslint --fix ."
   },
   "dependencies": {
-    "@libsql/client": "^0.15.11",
+    "@electric-sql/pglite": "^0.3.7",
     "argon2": "^0.44.0",
     "drizzle-orm": "^0.44.4",
     "effect": "^3.17.7",

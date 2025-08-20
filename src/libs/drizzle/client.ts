@@ -1,3 +1,6 @@
-import { drizzle } from 'drizzle-orm/libsql'
+import { PGlite } from '@electric-sql/pglite'
+import { drizzle } from 'drizzle-orm/pglite'
 
-export const database = drizzle(':memory:')
+const client = new PGlite()
+
+export const database = drizzle({ client })

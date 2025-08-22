@@ -4,6 +4,7 @@ import { ZodError } from 'zod'
 import { createEmail, Email } from '../../models/email'
 import { createId, Id } from '../../models/id'
 import { createPassword, Password } from '../../models/password'
+import { DrizzleService } from './drizzle-service'
 import { PasswordService } from './password-service'
 import { SignupUser } from './signup-user'
 import { SignupUserRepository } from './signup-user-repository'
@@ -25,7 +26,7 @@ export const SignupResponse = Data.case<SignupResponse>()
 export function signup(request: SignupRequest): Effect.Effect<
   SignupResponse,
   Error | ZodError,
-  PasswordService | SignupUserRepository
+  DrizzleService | PasswordService | SignupUserRepository
 > {
   return Effect.gen(function* () {
     const id = yield* createId()

@@ -1,1 +1,7 @@
+# dependencies
 node_modules
+
+# generate files
+.next
+next-env.d.ts
+*.tsbuildinfo

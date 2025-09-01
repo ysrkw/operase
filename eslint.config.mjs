@@ -5,9 +5,9 @@ import markdown from '@eslint/markdown'
 import stylistic from '@stylistic/eslint-plugin'
 import vitest from '@vitest/eslint-plugin'
 import perfectionist from 'eslint-plugin-perfectionist'
-import unicorn from 'eslint-plugin-unicorn'
 import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks';
+import reactHooks from 'eslint-plugin-react-hooks'
+import unicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config([
@@ -24,27 +24,27 @@ export default tseslint.config([
       reactHooks.configs['recommended-latest'],
       vitest.configs.recommended,
     ],
-    files: ['**/*.{js,ts}'],
-    ignores: [".next/**/*", "next-env.d.ts"],
+    files: ['**/*.{js,mjs,jsx,ts,mts,tsx}'],
+    ignores: ['.next/**/*', 'next-env.d.ts'],
     settings: {
       react: {
-        version: "detect",
-      }
-    }
+        version: 'detect',
+      },
+    },
   },
   {
     extends: [
-      json.configs.recommended
+      json.configs.recommended,
     ],
     files: ['**/*.json'],
-    ignores: ["package-lock.json"],
+    ignores: ['package-lock.json'],
     language: 'json/json',
   },
   {
     extends: [
-      markdown.configs.recommended
+      markdown.configs.recommended,
     ],
     files: ['**/*.md'],
     language: 'markdown/gfm',
-  }
+  },
 ])

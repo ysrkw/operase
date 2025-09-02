@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { signinAction } from '../actions/signin-action'
+import { signinAction } from '../actions'
 
 export function SigninForm() {
   const emailId = useId()

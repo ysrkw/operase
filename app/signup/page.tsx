@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SignupForm } from './ui/signup-form'
+import { SignupForm } from './components/signup-form'
 
 export const metadata: Metadata = {
   title: 'Sign up',

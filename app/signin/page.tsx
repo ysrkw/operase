@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SigninForm } from './ui/signin-form'
+import { SigninForm } from './components/signin-form'
 
 export const metadata: Metadata = {
   title: 'Sign in',

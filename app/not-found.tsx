@@ -1,0 +1,17 @@
+import type { Metadata } from 'next'
+
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: '404 Not Found',
+}
+
+export default function NotFound() {
+  return (
+    <>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+      <Link href="/">Return Home</Link>
+    </>
+  )
+}

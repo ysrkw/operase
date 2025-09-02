@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 
-import { redirect } from 'next/navigation'
-
 export const metadata: Metadata = {
-  title: 'Hello World',
+  title: 'Dashboard',
 }
 
 export default function Page() {
-  redirect('/signin')
+  return (
+    <>
+      <h1>Dashboard</h1>
+    </>
+  )
 }

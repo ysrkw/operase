@@ -8,7 +8,7 @@ export function SigninForm() {
 
   return (
     <>
-      <form action={signinAction} method="POST" name="signin">
+      <form action={signinAction}>
         <label htmlFor={emailId}>Email</label>
         <input id={emailId} name="email" placeholder="john@example.com" type="email" />
         <label htmlFor={passwordId}>Password</label>

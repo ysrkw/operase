@@ -8,7 +8,7 @@ export function SignupForm() {
   const confirmPasswordId = useId()
 
   return (
-    <form action={signupAction} method="POST" name="signup">
+    <form action={signupAction}>
       <label htmlFor={emailId}>Email</label>
       <input id={emailId} name="email" placeholder="john@example.com" type="email" />
       <label htmlFor={passwordId}>Password</label>

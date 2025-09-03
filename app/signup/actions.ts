@@ -1,15 +1,18 @@
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
-import { confirmPasswordSchema, emailSchema, passwordSchema } from '../lib/definitions'
+import { ConfirmPassword, Email, Name, Password } from '../lib/definitions'
 
 export async function signupAction(formData: FormData) {
   'use server'
 
   const schema = z.object({
-    confirmPassword: confirmPasswordSchema,
-    email: emailSchema,
-    password: passwordSchema,
+    confirmPassword: ConfirmPassword,
+    email: Email,
+    name: Name,
+    password: Password,
+  }).refine(data => data.password === data.confirmPassword, {
+    message: 'パスワードが一致しません',
   })
 
   const result = schema.safeParse(Object.fromEntries(formData.entries()))

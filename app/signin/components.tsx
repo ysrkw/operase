@@ -9,11 +9,11 @@ export function SigninForm() {
   return (
     <>
       <form action={signinAction}>
-        <label htmlFor={emailId}>Email</label>
+        <label htmlFor={emailId}>メールアドレス</label>
         <input id={emailId} name="email" placeholder="john@example.com" type="email" />
-        <label htmlFor={passwordId}>Password</label>
+        <label htmlFor={passwordId}>パスワード</label>
         <input id={passwordId} name="password" type="password" />
-        <button type="submit">Sign in</button>
+        <button type="submit">ログイン</button>
       </form>
     </>
   )

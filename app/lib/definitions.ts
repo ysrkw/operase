@@ -1,7 +1,13 @@
 import { z } from 'zod'
 
-export const emailSchema = z.email()
+export const Name = z.string().min(1).max(255)
+export type Name = z.infer<typeof Name>
 
-export const passwordSchema = z.string().min(8).max(64)
+export const Email = z.email()
+export type Email = z.infer<typeof Email>
 
-export const confirmPasswordSchema = passwordSchema.clone()
+export const Password = z.string().min(8).max(64)
+export type Password = z.infer<typeof Password>
+
+export const ConfirmPassword = Password.clone()
+export type ConfirmPassword = z.infer<typeof ConfirmPassword>

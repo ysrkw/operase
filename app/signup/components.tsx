@@ -3,19 +3,22 @@ import { useId } from 'react'
 import { signupAction } from './actions'
 
 export function SignupForm() {
+  const nameId = useId()
   const emailId = useId()
   const passwordId = useId()
   const confirmPasswordId = useId()
 
   return (
     <form action={signupAction}>
-      <label htmlFor={emailId}>Email</label>
+      <label htmlFor={nameId}>名前</label>
+      <input id={nameId} name="name" placeholder="John Doe" type="text" />
+      <label htmlFor={emailId}>メールアドレス</label>
       <input id={emailId} name="email" placeholder="john@example.com" type="email" />
-      <label htmlFor={passwordId}>Password</label>
+      <label htmlFor={passwordId}>パスワード</label>
       <input id={passwordId} name="password" type="password" />
-      <label htmlFor={confirmPasswordId}>Confirm Password</label>
+      <label htmlFor={confirmPasswordId}>パスワード（確認）</label>
       <input id={confirmPasswordId} name="confirmPassword" type="password" />
-      <button type="submit">Sign up</button>
+      <button type="submit">アカウント作成</button>
     </form>
   )
 }

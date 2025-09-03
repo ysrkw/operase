@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { SignupForm } from './components'
 
 export const metadata: Metadata = {
-  title: 'Sign up',
+  title: 'アカウント作成',
 }
 
 export default function Page() {

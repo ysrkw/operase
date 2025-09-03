@@ -1,11 +1,11 @@
+'use server'
+
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
 import { ConfirmPassword, Email, Name, Password } from '../lib/definitions'
 
 export async function signupAction(formData: FormData) {
-  'use server'
-
   const schema = z.object({
     confirmPassword: ConfirmPassword,
     email: Email,

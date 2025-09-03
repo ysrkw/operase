@@ -1,3 +1,4 @@
+import { UserPlus } from 'lucide-react'
 import { useId } from 'react'
 
 import { signupAction } from './actions'
@@ -18,7 +19,10 @@ export function SignupForm() {
       <input id={passwordId} name="password" type="password" />
       <label htmlFor={confirmPasswordId}>パスワード（確認）</label>
       <input id={confirmPasswordId} name="confirmPassword" type="password" />
-      <button type="submit">アカウント作成</button>
+      <button type="submit">
+        <UserPlus />
+        アカウント作成
+      </button>
     </form>
   )
 }

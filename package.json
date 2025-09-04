@@ -12,6 +12,7 @@
   "dependencies": {
     "@electric-sql/pglite": "^0.3.7",
     "argon2": "^0.44.0",
+    "drizzle-kit": "^0.31.4",
     "drizzle-orm": "^0.44.4",
     "effect": "^3.17.7",
     "lucide-react": "^0.542.0",

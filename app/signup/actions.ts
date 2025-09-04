@@ -3,11 +3,11 @@
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
-import { ConfirmPassword, Email, Name, Password } from '../lib/definitions'
+import { Email, Name, Password } from '@/lib/definitions'
 
 export async function signupAction(formData: FormData) {
   const schema = z.object({
-    confirmPassword: ConfirmPassword,
+    confirmPassword: Password,
     email: Email,
     name: Name,
     password: Password,

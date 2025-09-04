@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
-import { Email, Password } from '../lib/definitions'
+import { Email, Password } from '@/lib/definitions'
 
 export async function signinAction(formData: FormData) {
   const schema = z.object({

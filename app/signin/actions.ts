@@ -3,10 +3,11 @@
 import argon2 from 'argon2'
 import { desc, eq } from 'drizzle-orm'
 import { redirect } from 'next/navigation'
+import { ulid } from 'ulid'
 import { z } from 'zod'
 
 import { database } from '@/lib/database'
-import { passwords, users } from '@/lib/database/schema'
+import { passwords, sessions, users } from '@/lib/database/schema'
 import { Email, Password } from '@/lib/definitions'
 
 export async function signinAction(formData: FormData) {
@@ -44,7 +45,16 @@ export async function signinAction(formData: FormData) {
     throw new Error('パスワードが違います')
   }
 
-  console.log(existUser, lastPassword)
+  const [newSession] = await database
+    .insert(sessions)
+    .values({
+      createdAt: new Date(),
+      id: ulid(),
+      userId: existUser.id,
+    })
+    .returning()
+
+  console.log(existUser, lastPassword, newSession)
 
   return redirect('/dashboard')
 }

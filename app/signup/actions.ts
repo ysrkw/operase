@@ -35,7 +35,8 @@ export async function signupAction(formData: FormData) {
     throw new Error('ユーザーが既に存在します')
   }
 
-  const hashPassword = await argon2.hash(result.data.password)
+  const hash = await argon2.hash(result.data.password)
+  const createdAt = new Date()
 
   const createdUser = await database.transaction(async (tx) => {
     const [newUser] = await tx
@@ -50,7 +51,8 @@ export async function signupAction(formData: FormData) {
     const [newPassword] = await tx
       .insert(passwords)
       .values({
-        hash: hashPassword,
+        createdAt,
+        hash,
         userId: newUser.id,
       })
       .returning()
@@ -58,6 +60,7 @@ export async function signupAction(formData: FormData) {
     const [newSession] = await tx
       .insert(sessions)
       .values({
+        createdAt,
         id: ulid(),
         userId: newUser.id,
       })

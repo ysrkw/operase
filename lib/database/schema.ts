@@ -1,4 +1,4 @@
-import { pgTable, varchar } from 'drizzle-orm/pg-core'
+import { pgTable, timestamp, varchar } from 'drizzle-orm/pg-core'
 
 export const group = pgTable('group', {
   id: varchar().notNull().primaryKey(),
@@ -17,13 +17,13 @@ export const memberships = pgTable('memberships', {
 })
 
 export const passwords = pgTable('passwords', {
-  createdAt: varchar().notNull().default('now'),
+  createdAt: timestamp().notNull().defaultNow(),
   hash: varchar().notNull().primaryKey(),
   userId: varchar().notNull().references(() => users.id),
 })
 
 export const sessions = pgTable('sessions', {
-  createdAt: varchar().notNull().default('now'),
+  createdAt: timestamp().notNull().defaultNow(),
   id: varchar().notNull().primaryKey(),
   userId: varchar().notNull().references(() => users.id),
 })

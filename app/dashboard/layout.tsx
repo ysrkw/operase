@@ -1,13 +1,16 @@
 import Link from 'next/link'
 
+import { Copyright } from '@/components/ui/copyright'
+import { Logo } from '@/components/ui/logo'
+
 import { NavMenu, SidebarMenu } from './components'
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header className="h-16 border-b flex items-center justify-between px-4">
+      <header className="h-16 flex items-center justify-between px-4">
         <Link href="/">
-          <h1 className="text-lg font-semibold">Operase</h1>
+          <Logo />
         </Link>
         <nav>
           <NavMenu />
@@ -21,8 +24,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {children}
         </article>
       </main>
-      <footer className="h-8 border-t flex items-center justify-center px-4">
-        <p>© 2025 Operase</p>
+      <footer className="h-8 flex items-center justify-center px-4">
+        <Copyright />
       </footer>
     </>
   )

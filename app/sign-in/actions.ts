@@ -10,7 +10,7 @@ import { database } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
 import { Email, Password } from '@/lib/definitions'
 
-export async function signinAction(formData: FormData) {
+export async function signIn(formData: FormData) {
   const schema = z.object({
     email: Email,
     password: Password,

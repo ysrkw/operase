@@ -1,7 +1,7 @@
-import { LayoutDashboard, LogOut } from 'lucide-react'
+import { LayoutDashboard, Settings } from 'lucide-react'
 import Link from 'next/link'
 
-export function SidebarMenu() {
+export function Sidebar() {
   return (
     <ul className="flex flex-col">
       <li>
@@ -11,9 +11,9 @@ export function SidebarMenu() {
         </Link>
       </li>
       <li>
-        <Link className="flex items-center gap-2 p-2" href="/signout">
-          <LogOut />
-          ログアウト
+        <Link className="flex items-center gap-2 p-2" href="/settings">
+          <Settings />
+          設定
         </Link>
       </li>
     </ul>

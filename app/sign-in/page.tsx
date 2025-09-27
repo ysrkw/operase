@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { useId } from 'react'
 
-import { signinAction } from './actions'
+import { signIn } from './actions'
 
 export const metadata: Metadata = {
   title: 'ログイン',
@@ -16,7 +16,7 @@ export default function Page() {
   const inputClassNames = 'border py-2 px-4 rounded'
 
   return (
-    <form action={signinAction} className="flex flex-col gap-4">
+    <form action={signIn} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <label htmlFor={emailId}>メールアドレス</label>
         <input className={inputClassNames} id={emailId} name="email" placeholder="john@example.com" required type="email" />
@@ -34,7 +34,7 @@ export default function Page() {
         ログイン
       </button>
       <div className="text-center">
-        <Link className="text-sm underline" href="/signup">
+        <Link className="text-sm underline" href="/sign-up">
           アカウントをお持ちでない場合はこちら
         </Link>
       </div>

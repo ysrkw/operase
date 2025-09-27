@@ -10,7 +10,7 @@ import { database } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
 import { Email, Name, Password } from '@/lib/definitions'
 
-export async function signupAction(formData: FormData) {
+export async function signUp(formData: FormData) {
   const schema = z.object({
     confirmPassword: Password,
     email: Email,

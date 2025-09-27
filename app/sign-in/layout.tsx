@@ -1,6 +1,6 @@
 import { FormLayout } from '@/components/layout/form-layout'
 
-export default function SigninLayout({ children }: { children: React.ReactNode }) {
+export default function SignInLayout({ children }: { children: React.ReactNode }) {
   return (
     <FormLayout>
       {children}

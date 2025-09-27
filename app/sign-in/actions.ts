@@ -2,6 +2,7 @@
 
 import argon2 from 'argon2'
 import { desc, eq } from 'drizzle-orm'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
 import { z } from 'zod'
@@ -54,7 +55,15 @@ export async function signIn(formData: FormData) {
     })
     .returning()
 
-  console.log(existUser, lastPassword, newSession)
+  const cookie = await cookies()
+
+  cookie.set({
+    httpOnly: true,
+    name: 'sid',
+    path: '/',
+    sameSite: 'strict',
+    value: newSession.id,
+  })
 
   return redirect('/dashboard')
 }

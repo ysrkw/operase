@@ -1,5 +1,22 @@
+import { count, eq } from 'drizzle-orm'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default function Page() {
-  redirect('/sign-in')
+import { database } from '@/lib/database'
+import { sessions } from '@/lib/database/schema'
+
+export default async function Page() {
+  const cookie = await cookies()
+  const sid = cookie.get('sid')
+
+  if (!sid) return redirect('/sign-in')
+
+  const [existSession] = await database
+    .select({ count: count() })
+    .from(sessions)
+    .where(eq(sessions.id, sid.value))
+
+  if (existSession.count === 0) return redirect('/sign-in')
+
+  return redirect('/dashboard')
 }

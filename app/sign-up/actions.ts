@@ -2,6 +2,7 @@
 
 import argon2 from 'argon2'
 import { count, eq } from 'drizzle-orm'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
 import { z } from 'zod'
@@ -69,7 +70,15 @@ export async function signUp(formData: FormData) {
     return { newPassword, newSession, newUser }
   })
 
-  console.log(createdUser)
+  const cookie = await cookies()
+
+  cookie.set({
+    httpOnly: true,
+    name: 'sid',
+    path: '/',
+    sameSite: 'strict',
+    value: createdUser.newSession.id,
+  })
 
   return redirect('/dashboard')
 }

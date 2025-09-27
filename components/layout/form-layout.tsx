@@ -5,18 +5,18 @@ import { Logo } from './parts/logo'
 
 export function FormLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <header className="h-16 flex items-center justify-center px-4">
+    <div className="grid place-items-center min-h-screen">
+      <header className="flex items-center justify-center min-h-16">
         <Link href="/">
           <Logo />
         </Link>
       </header>
-      <main className="max-w-lg m-auto p-4">
+      <main className="w-full max-w-md px-4 md:px-0 py-4">
         {children}
       </main>
-      <footer className="h-8 flex items-center justify-center px-4">
+      <footer className="flex items-center justify-center min-h-16">
         <Copyright />
       </footer>
-    </>
+    </div>
   )
 }

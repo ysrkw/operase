@@ -8,7 +8,7 @@ import { Logo } from './parts/logo'
 export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header className="h-16 flex items-center justify-between px-4">
+      <header className="flex items-center justify-between p-4">
         <Link href="/">
           <Logo />
         </Link>
@@ -24,7 +24,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </article>
       </main>
-      <footer className="h-8 flex items-center justify-center px-4">
+      <footer className="flex items-center justify-center p-4">
         <Copyright />
       </footer>
     </>

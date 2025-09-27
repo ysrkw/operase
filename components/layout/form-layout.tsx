@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Copyright } from './parts/copyright'
 import { Logo } from './parts/logo'
 
@@ -5,7 +7,9 @@ export function FormLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header className="h-16 flex items-center justify-center px-4">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
       </header>
       <main className="max-w-lg m-auto p-4">
         {children}

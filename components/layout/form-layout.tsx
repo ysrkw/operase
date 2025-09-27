@@ -1,5 +1,5 @@
-import { Copyright } from '@/components/ui/copyright'
-import { Logo } from '@/components/ui/logo'
+import { Copyright } from './parts/copyright'
+import { Logo } from './parts/logo'
 
 export function FormLayout({ children }: { children: React.ReactNode }) {
   return (

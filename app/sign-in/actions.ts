@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
 import { z } from 'zod'
 
-import { database } from '@/lib/database'
+import { createDatabase } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
 import { Email, Password } from '@/lib/definitions'
 
@@ -22,6 +22,8 @@ export async function signIn(formData: FormData) {
   if (!result.success) {
     throw result.error
   }
+
+  const database = await createDatabase()
 
   const [existUser] = await database
     .select({ id: users.id })

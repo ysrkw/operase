@@ -4,7 +4,7 @@ import { count, eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-import { database } from '@/lib/database'
+import { createDatabase } from '@/lib/database'
 import { sessions } from '@/lib/database/schema'
 
 export const metadata: Metadata = {
@@ -16,6 +16,8 @@ export default async function Page() {
   const sid = cookie.get('sid')
 
   if (!sid) return redirect('/sign-in')
+
+  const database = await createDatabase()
 
   const [existSession] = await database
     .select({ count: count() })

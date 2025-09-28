@@ -35,7 +35,7 @@ export default function Page() {
         <label htmlFor={confirmPasswordId}>パスワード（確認）</label>
         <input className={inputClassNames} id={confirmPasswordId} name="confirmPassword" required type="password" />
       </div>
-      <button className="items-center border py-2 px-4 rounded-full cursor-pointer" type="submit">
+      <button className="cursor-pointer items-center rounded-full border px-4 py-2" type="submit">
         アカウント作成
       </button>
       <div className="text-center">

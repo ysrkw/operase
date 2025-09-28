@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Home',
+    default: 'Template',
     template: '%s | Operase',
   },
 }

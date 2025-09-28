@@ -3,14 +3,15 @@ import eslint from '@eslint/js'
 import json from '@eslint/json'
 import markdown from '@eslint/markdown'
 import stylistic from '@stylistic/eslint-plugin'
-import vitest from '@vitest/eslint-plugin'
 import perfectionist from 'eslint-plugin-perfectionist'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
+import tailwindcss from 'eslint-plugin-tailwindcss'
 import unicorn from 'eslint-plugin-unicorn'
+import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config([
+export default defineConfig([
   {
     extends: [
       eslint.configs.recommended,
@@ -22,13 +23,16 @@ export default tseslint.config([
       react.configs.flat.recommended,
       react.configs.flat['jsx-runtime'],
       reactHooks.configs['recommended-latest'],
-      vitest.configs.recommended,
+      tailwindcss.configs['flat/recommended'],
     ],
     files: ['**/*.{js,mjs,jsx,ts,mts,tsx}'],
     ignores: ['.next/**/*', 'next-env.d.ts'],
     settings: {
       react: {
         version: 'detect',
+      },
+      tailwindcss: {
+        cssConfigPath: 'app/globals.css',
       },
     },
   },

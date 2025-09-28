@@ -1,9 +1,15 @@
+import type { Metadata } from 'next'
+
 import { count, eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { database } from '@/lib/database'
 import { sessions } from '@/lib/database/schema'
+
+export const metadata: Metadata = {
+  title: 'ホーム',
+}
 
 export default async function Page() {
   const cookie = await cookies()

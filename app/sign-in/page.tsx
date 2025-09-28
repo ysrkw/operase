@@ -30,7 +30,7 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <button className="border py-2 px-4 rounded-full text-center cursor-pointer" type="submit">
+      <button className="cursor-pointer rounded-full border px-4 py-2 text-center" type="submit">
         ログイン
       </button>
       <div className="text-center">

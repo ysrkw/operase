@@ -1,14 +1,12 @@
-import { PGlite } from '@electric-sql/pglite'
 import { drizzle } from 'drizzle-orm/pglite'
 
 import * as schema from './schema'
 
-export async function createDatabase() {
-  const client = await PGlite.create()
-
+export function createDatabase() {
   return drizzle({
-    client,
-    logger: true,
+    connection: {
+      dataDir: './data',
+    },
     schema,
   })
 }

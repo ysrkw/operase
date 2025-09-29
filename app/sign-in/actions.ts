@@ -23,7 +23,7 @@ export async function signIn(formData: FormData) {
     throw result.error
   }
 
-  const database = createDatabase()
+  const database = await createDatabase()
 
   const [existUser] = await database
     .select({ id: users.id })

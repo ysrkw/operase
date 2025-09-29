@@ -27,7 +27,7 @@ export async function signUp(formData: FormData) {
     throw result.error
   }
 
-  const database = createDatabase()
+  const database = await createDatabase()
 
   const [existUser] = await database
     .select({ count: count() })

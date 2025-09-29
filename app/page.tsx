@@ -17,7 +17,7 @@ export default async function Page() {
 
   if (!sid) return redirect('/sign-in')
 
-  const database = createDatabase()
+  const database = await createDatabase()
 
   const [existSession] = await database
     .select({ count: count() })

@@ -5,7 +5,7 @@ import * as schema from './schema'
 export function createDatabase() {
   return drizzle({
     connection: {
-      dataDir: './data',
+      dataDir: './dist',
     },
     schema,
   })

@@ -5,19 +5,14 @@ import { desc, eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
-import { z } from 'zod'
 
 import { createDatabase } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
-import { Email, Password } from '@/lib/definitions'
+
+import { SignInSchema } from './schema'
 
 export async function signIn(formData: FormData) {
-  const schema = z.object({
-    email: Email,
-    password: Password,
-  })
-
-  const result = schema.safeParse(Object.fromEntries(formData.entries()))
+  const result = SignInSchema.safeParse(Object.fromEntries(formData.entries()))
 
   if (!result.success) {
     throw result.error

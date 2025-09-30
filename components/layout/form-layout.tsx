@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Copyright } from './parts/copyright'
+import { CopyRight } from './parts/copy-right'
 import { Logo } from './parts/logo'
 
 export function FormLayout({ children }: { children: React.ReactNode }) {
@@ -15,7 +15,7 @@ export function FormLayout({ children }: { children: React.ReactNode }) {
         {children}
       </article>
       <footer className="flex min-h-16 items-center justify-center">
-        <Copyright />
+        <CopyRight />
       </footer>
     </main>
   )

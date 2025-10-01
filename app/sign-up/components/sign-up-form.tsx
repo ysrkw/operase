@@ -36,9 +36,10 @@ export function SignUpForm() {
         <button className="cursor-pointer items-center rounded-full border px-4 py-2" type="submit">
           アカウントを作成する
         </button>
-        <div className="text-center">
-          <Link className="text-sm underline" href="/sign-in">
-            すでにアカウントをお持ちの方はこちら
+        <div className="text-center text-sm">
+          すでにアカウントをお持ちの方は
+          <Link className="underline" href="/sign-in">
+            こちら
           </Link>
         </div>
       </fieldset>

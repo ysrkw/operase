@@ -31,9 +31,10 @@ export function SignInForm() {
         <button className="cursor-pointer rounded-full border px-4 py-2 text-center" type="submit">
           ログインに進む
         </button>
-        <div className="text-center">
-          <Link className="text-sm underline" href="/sign-up">
-            アカウントをお持ちでない場合はこちら
+        <div className="text-center text-sm">
+          アカウントをお持ちでない場合は
+          <Link className="underline" href="/sign-up">
+            こちら
           </Link>
         </div>
       </fieldset>

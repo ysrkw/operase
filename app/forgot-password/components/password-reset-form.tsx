@@ -23,7 +23,7 @@ export function PasswordResetForm() {
         </button>
         <div className="text-center">
           <Link className="text-sm underline" href="/sign-in">
-            ログインページへ
+            ログインページに戻る
           </Link>
         </div>
       </fieldset>

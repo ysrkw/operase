@@ -5,23 +5,16 @@ import { count, eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
-import { z } from 'zod'
 
 import { createDatabase } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
-import { Email, Name, Password } from '@/lib/definitions'
+
+import { SignUpSchema } from './schema'
 
 export async function signUp(formData: FormData) {
-  const schema = z.object({
-    confirmPassword: Password,
-    email: Email,
-    name: Name,
-    password: Password,
-  }).refine(v => v.password === v.confirmPassword, {
-    message: 'パスワードが一致しません',
-  })
-
-  const result = schema.safeParse(Object.fromEntries(formData.entries()))
+  const result = await SignUpSchema.spa(
+    Object.fromEntries(formData.entries()),
+  )
 
   if (!result.success) {
     throw result.error

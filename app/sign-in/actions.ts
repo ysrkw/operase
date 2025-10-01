@@ -12,7 +12,9 @@ import { passwords, sessions, users } from '@/lib/database/schema'
 import { SignInSchema } from './schema'
 
 export async function signIn(formData: FormData) {
-  const result = SignInSchema.safeParse(Object.fromEntries(formData.entries()))
+  const result = await SignInSchema.spa(
+    Object.fromEntries(formData.entries()),
+  )
 
   if (!result.success) {
     throw result.error

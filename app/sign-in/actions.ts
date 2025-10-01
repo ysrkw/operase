@@ -9,10 +9,10 @@ import { ulid } from 'ulid'
 import { createDatabase } from '@/lib/database'
 import { passwords, sessions, users } from '@/lib/database/schema'
 
-import { SignInSchema } from './schema'
+import { LoginSchema } from './schema'
 
-export async function signIn(formData: FormData) {
-  const result = await SignInSchema.spa(
+export async function login(formData: FormData) {
+  const result = await LoginSchema.spa(
     Object.fromEntries(formData.entries()),
   )
 

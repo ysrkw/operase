@@ -19,19 +19,19 @@ export function SignUpForm() {
         </legend>
         <div className="flex flex-col gap-1">
           <label htmlFor={nameId}>名前</label>
-          <input className="rounded border p-2 px-4" id={nameId} name="name" placeholder="John Doe" required type="text" />
+          <input className="rounded border p-2 px-4" id={nameId} name="name" placeholder="John Doe" type="text" />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor={emailId}>メールアドレス</label>
-          <input className="rounded border p-2 px-4" id={emailId} name="email" placeholder="john@example.com" required type="email" />
+          <input className="rounded border p-2 px-4" id={emailId} name="email" placeholder="john@example.com" type="email" />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor={passwordId}>パスワード</label>
-          <input autoComplete="new-password" className="rounded border p-2 px-4" id={passwordId} name="password" required type="password" />
+          <input autoComplete="new-password" className="rounded border p-2 px-4" id={passwordId} name="password" type="password" />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor={confirmPasswordId}>パスワード（確認）</label>
-          <input autoComplete="new-password" className="rounded border p-2 px-4" id={confirmPasswordId} name="confirmPassword" required type="password" />
+          <input autoComplete="new-password" className="rounded border p-2 px-4" id={confirmPasswordId} name="confirmPassword" type="password" />
         </div>
         <button className="cursor-pointer items-center rounded-full border px-4 py-2" type="submit">
           アカウントを作成する

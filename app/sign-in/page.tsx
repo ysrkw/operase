@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SignInForm } from './components/sign-in-form'
+import { LoginForm } from './components/login-form'
 
 export const metadata: Metadata = {
   title: 'ログイン',
@@ -8,6 +8,6 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SignInForm />
+    <LoginForm />
   )
 }

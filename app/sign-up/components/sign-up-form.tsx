@@ -27,11 +27,11 @@ export function SignUpForm() {
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor={passwordId}>パスワード</label>
-          <input className="rounded border p-2 px-4" id={passwordId} name="password" required type="password" />
+          <input autoComplete="new-password" className="rounded border p-2 px-4" id={passwordId} name="password" required type="password" />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor={confirmPasswordId}>パスワード（確認）</label>
-          <input className="rounded border p-2 px-4" id={confirmPasswordId} name="confirmPassword" required type="password" />
+          <input autoComplete="new-password" className="rounded border p-2 px-4" id={confirmPasswordId} name="confirmPassword" required type="password" />
         </div>
         <button className="cursor-pointer items-center rounded-full border px-4 py-2" type="submit">
           アカウントを作成する

@@ -8,10 +8,11 @@ import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import tailwindcss from 'eslint-plugin-tailwindcss'
 import unicorn from 'eslint-plugin-unicorn'
-import { defineConfig } from 'eslint/config'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig([
+  globalIgnores(['.next/**/*', 'dist/**/*', 'next-env.d.ts', 'package-lock.json']),
   {
     extends: [
       eslint.configs.recommended,
@@ -26,7 +27,6 @@ export default defineConfig([
       tailwindcss.configs['flat/recommended'],
     ],
     files: ['**/*.{js,mjs,jsx,ts,mts,tsx}'],
-    ignores: ['.next/**/*', 'next-env.d.ts'],
     settings: {
       react: {
         version: 'detect',
@@ -41,7 +41,6 @@ export default defineConfig([
       json.configs.recommended,
     ],
     files: ['**/*.json'],
-    ignores: ['package-lock.json'],
     language: 'json/json',
   },
   {

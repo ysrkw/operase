@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SignUpForm } from './components/sign-up-form'
+import { CreateUserForm } from './components/create-user-form'
 
 export const metadata: Metadata = {
   title: 'アカウント作成',
@@ -8,6 +8,6 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SignUpForm />
+    <CreateUserForm />
   )
 }

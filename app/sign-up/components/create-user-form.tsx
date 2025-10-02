@@ -3,16 +3,16 @@
 import Link from 'next/link'
 import { useId } from 'react'
 
-import { signUp } from '../actions'
+import { createUser } from '../actions'
 
-export function SignUpForm() {
+export function CreateUserForm() {
   const nameId = useId()
   const emailId = useId()
   const passwordId = useId()
   const confirmPasswordId = useId()
 
   return (
-    <form action={signUp}>
+    <form action={createUser} name="create-user">
       <fieldset className="flex flex-col gap-4">
         <legend className="text-center text-xl">
           アカウント作成

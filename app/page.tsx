@@ -4,8 +4,8 @@ import { count, eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-import { createDatabase } from '@/lib/database'
-import { sessions } from '@/lib/database/schema'
+import { createDatabase } from '../lib/database'
+import { sessions } from '../lib/database/schema'
 
 export const metadata: Metadata = {
   title: 'ホーム',

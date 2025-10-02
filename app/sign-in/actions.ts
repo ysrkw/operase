@@ -6,9 +6,8 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ulid } from 'ulid'
 
-import { createDatabase } from '@/lib/database'
-import { passwords, sessions, users } from '@/lib/database/schema'
-
+import { createDatabase } from '../../lib/database'
+import { passwords, sessions, users } from '../../lib/database/schema'
 import { LoginSchema } from './schema'
 
 export async function login(formData: FormData) {

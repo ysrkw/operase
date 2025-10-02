@@ -1,13 +1,7 @@
 {
   "extends": "@tsconfig/next",
   "compilerOptions": {
-    "target": "ES2017",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "target": "ES2017"
   },
   "include": [
     "node_modules/@tsconfig/next/next-env.d.ts",

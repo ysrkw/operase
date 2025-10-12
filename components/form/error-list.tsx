@@ -1,9 +1,9 @@
-interface ErrorListProps {
+interface ErrorListProperties {
   errors: string[]
 }
 
-export function ErrorList({ errors }: ErrorListProps) {
-  if (errors.length === 0) return null
+export function ErrorList({ errors }: ErrorListProperties) {
+  if (errors.length === 0) return
 
   const ErrorListItems = errors.map((error, index) => (
     <li key={index}>

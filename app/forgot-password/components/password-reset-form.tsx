@@ -11,12 +11,12 @@ export function PasswordResetForm() {
 
   const [email, setEmail] = useState('')
 
-  function changeEmail(e: ChangeEvent<HTMLInputElement>) {
-    setEmail(e.target.value)
+  function changeEmail(event: ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value)
   }
 
   const [state, formAction, isPending] = useActionState(passwordReset, {
-    emailErrors: []
+    emailErrors: [],
   })
 
   return (
@@ -27,7 +27,7 @@ export function PasswordResetForm() {
         </legend>
         <div className="flex flex-col gap-1">
           <label htmlFor={emailId}>メールアドレス</label>
-          <input className="rounded border px-4 py-2 disabled:bg-gray-100" id={emailId} name="email" placeholder="john@example.com" type="email" value={email} onChange={changeEmail} />
+          <input className="rounded border px-4 py-2 disabled:bg-gray-100" id={emailId} name="email" onChange={changeEmail} placeholder="john@example.com" type="email" value={email} />
           <ErrorList errors={state.emailErrors} />
         </div>
         <button className="cursor-pointer rounded-full border px-4 py-2 text-center disabled:bg-gray-100" type="submit">

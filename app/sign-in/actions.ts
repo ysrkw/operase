@@ -9,14 +9,25 @@ import { ulid } from 'ulid'
 import { createDatabase } from '../../lib/database'
 import { passwords, sessions, users } from '../../lib/database/schema'
 import { LoginSchema } from './schema'
+import z from 'zod'
 
-export async function login(formData: FormData) {
+interface LoginFormState {
+  emailErrors: string[]
+  passwordErrors: string[]
+}
+
+export async function login(currentState: LoginFormState, formData: FormData) {
   const result = await LoginSchema.spa(
     Object.fromEntries(formData.entries()),
   )
 
   if (!result.success) {
-    throw result.error
+    const errors = z.flattenError(result.error)
+
+    return {
+      emailErrors: errors.fieldErrors.email ?? [],
+      passwordErrors: errors.fieldErrors.password ?? [],
+    }
   }
 
   const database = await createDatabase()

@@ -8,9 +8,7 @@ import { passwordReset } from '../actions'
 
 export function PasswordResetForm() {
   const emailId = useId()
-
   const [email, setEmail] = useState('')
-
   function changeEmail(event: ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value)
   }
